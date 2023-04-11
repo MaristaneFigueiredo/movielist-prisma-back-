@@ -23,3 +23,14 @@ export type MovieResponse = {
 };
 
 
+export type MovieReturn= {
+  id?: number;
+  name?: string;
+  whatched?: boolean;
+  plataformId?: number;
+  plataformName?: string;
+  genreId?: number;
+  genreName?: string;
+}[];
+
+

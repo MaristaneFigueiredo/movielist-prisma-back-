@@ -6,24 +6,25 @@ import { boolean, number } from "joi";
 
 async function movieExistPlataform({name, plataformId}:MovieResponse)  {    
    
-   const {rows : movies} = await moviesRepository.movieExistPlataform ({name, plataformId} )      
-   
-   const [movieExistPlataform] = movies
+   //const {rows : movies} = await moviesRepository.movieExistPlataform ({name, plataformId} )      
+   const movies = await moviesRepository.movieExistPlataform ({name, plataformId} )
+ /*   const [movieExistPlataform] = movies
  
 
    if(movieExistPlataform) {        
          throw genericErros.conflitctError("Movie already exists for this plataform")            
-   }        
+   }    */     
 }
 
 async function movieExistById(id:number) {
  
-  const {rows : movies} = await moviesRepository.movieExistById(id)    
+  /* const {rows : movies} = await moviesRepository.movieExistById(id)    */ 
+  const  movies = await moviesRepository.movieExistById(id)   
    
-  const [movieExist] = movies
+/*   const [movieExist] = movies
   if(!movieExist) {        
         throw genericErros.notFoundError()            
-  }  
+  }   */
 
 }
 

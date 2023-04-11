@@ -25,6 +25,7 @@ model movies {
   whatched    Boolean?   @default(false)
   plataforms  plataforms @relation(fields: [plataformId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "movies_fk0")
   genres      genres     @relation(fields: [genreId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "movies_fk1")
+ 
 }
 
 model plataforms {

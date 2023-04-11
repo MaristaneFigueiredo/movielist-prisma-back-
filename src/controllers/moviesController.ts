@@ -22,7 +22,8 @@ async function createMovies(req: Request, res: Response, next:NextFunction) {
 
 async function getMovies(req: Request, res: Response, next:NextFunction) {
     try {           
-        const {rows : movies} = await moviesService.getMovies()
+        /* const {rows : movies} = await moviesService.getMovies() */
+        const movies = await moviesService.getMovies()
         res.send(movies);
 
       } catch (error) {
@@ -36,7 +37,8 @@ async function countMoviesBypPlatform(
   next: NextFunction
 ) {
   try {
-    const {rows : movies}  = await moviesService.countMoviesBypPlatform();
+    /* const {rows : movies}  = await moviesService.countMoviesBypPlatform(); */
+    const movies = await moviesService.countMoviesBypPlatform()
     res.send(movies);
   } catch (error) {
     next(error);

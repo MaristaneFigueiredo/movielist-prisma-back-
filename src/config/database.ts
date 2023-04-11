@@ -1,4 +1,4 @@
-import pg from "pg"
+/* import pg from "pg"
 
 import dotenv from "dotenv"
 
@@ -15,3 +15,10 @@ const connectionDB = new Pool({
 
 
 export default connectionDB
+ */
+
+import {PrismaClient} from "@prisma/client"
+
+const prisma = new PrismaClient()
+
+export default prisma
