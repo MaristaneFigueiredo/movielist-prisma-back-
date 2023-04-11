@@ -24,6 +24,15 @@ async function movieExistPlataform({name, plataformId}:MovieResponse) {
     `;   
 
     return await connectionDb.query(query, [name, plataformId]); */
+    const moviePlataform = await prisma.movies.findFirst({
+      where: {
+        name: name,
+        plataformId: plataformId
+      }
+    })
+    console.log('moviePlataform', moviePlataform)
+
+    return movieExistPlataform
 }
 
 //: Promise<QueryResult<MovieResponse>>
@@ -39,7 +48,7 @@ async function getMovies(): Promise<MovieReturn>   {
 
     const movies = await prisma.movies.findMany({    
      
-      select: {
+       select: {
         id: true,   
         name: true, // movie
         whatched: true,
@@ -53,9 +62,9 @@ async function getMovies(): Promise<MovieReturn>   {
             name:true //genre
           }
         }
-      }  
+      }   
 
-
+ 
      /* include: {        
         plataforms: true, // inclui as plataformas na consulta
         genres: true

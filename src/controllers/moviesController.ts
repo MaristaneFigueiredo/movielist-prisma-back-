@@ -21,8 +21,7 @@ async function createMovies(req: Request, res: Response, next:NextFunction) {
 }
 
 async function getMovies(req: Request, res: Response, next:NextFunction) {
-    try {           
-        /* const {rows : movies} = await moviesService.getMovies() */
+    try {                   
         const movies = await moviesService.getMovies()
         res.send(movies);
 
