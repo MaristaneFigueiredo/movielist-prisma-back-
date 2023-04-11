@@ -6,8 +6,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/server.ts"
+    "dev": "nodemon src/server.ts",
+    "prisma:seed": "npx prisma db seed"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  }, 
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MaristaneFigueiredo/movielist-back.git"
