@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model genres {
+  id        Int       @id(map: "genres_pk") @default(autoincrement())
+  name      String    @db.VarChar(50)
+  createdAt DateTime  @default(dbgenerated("'2023-04-04 08:53:41.850676'::timestamp without time zone")) @db.Timestamp(6)
+  updateAt  DateTime? @db.Timestamp(6)
+  movies    movies[]
+}
+
+model movies {
+  id          Int        @id(map: "movies_pk") @default(autoincrement())
+  name        String     @db.VarChar(50)
+  createdAt   DateTime   @default(dbgenerated("'2023-04-04 08:53:41.850676'::timestamp without time zone")) @db.Timestamp(6)
+  updateAt    DateTime?  @db.Timestamp(6)
+  plataformId Int
+  genreId     Int
+  whatched    Boolean?   @default(false)
+  plataforms  plataforms @relation(fields: [plataformId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "movies_fk0")
+  genres      genres     @relation(fields: [genreId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "movies_fk1")
+}
+
+model plataforms {
+  id        Int       @id(map: "plataforms_pk") @default(autoincrement())
+  name      String    @db.VarChar(50)
+  createdAt DateTime  @default(dbgenerated("'2023-04-04 08:53:41.850676'::timestamp without time zone")) @db.Timestamp(6)
+  updateAt  DateTime? @db.Timestamp(6)
+  movies    movies[]
+}

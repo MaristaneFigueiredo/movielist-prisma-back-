@@ -1,0 +1,1 @@
+DATABASE_URL = postgres://vlncvdnl:2Hahqswbz11j9nczAbXLWrY4mubskG1_@mahmud.db.elephantsql.com/vlncvdnl
