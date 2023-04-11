@@ -57,15 +57,15 @@ async function getMovies(): Promise<MovieReturn> {
   return movies
 }
 
-//: Promise<QueryResult<MovieResponse>>
-async function countMoviesBypPlatform() {
-  /*   const query = `        
-      SELECT p.name as Plataform , COUNT(m."plataformId") as Qtde 
-      FROM movies m 
-          INNER JOIN plataforms p ON m."plataformId" = p.id
-      GROUP BY m."plataformId", p.name
-  `; 
-  return await connectionDb.query(query) */
+async function countMoviesBypPlatform(): Promise<MovieReturn> {
+  const movieExistPlataform = await prisma.movies.groupBy({
+    by: ["plataformId"], // Campo pelo qual você deseja agrupar
+    _count: true, // Usar a função de agregação _count para contar os registros
+    orderBy: {
+      plataformId: "asc",
+    },
+  })
+  return movieExistPlataform
 }
 
 async function deleteMovie(id: number): Promise<void> {

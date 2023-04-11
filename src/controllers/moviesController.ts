@@ -17,7 +17,11 @@ async function createMovies(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-async function getMovies(req: Request, res: Response, next: NextFunction) {
+async function getMovies(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
   try {
     const movies = await moviesService.getMovies()
     res.send(movies)
@@ -29,7 +33,7 @@ async function countMoviesBypPlatform(
   req: Request,
   res: Response,
   next: NextFunction
-) {
+): Promise<void> {
   try {
     /* const {rows : movies}  = await moviesService.countMoviesBypPlatform(); */
     const movies = await moviesService.countMoviesBypPlatform()
@@ -39,7 +43,11 @@ async function countMoviesBypPlatform(
   }
 }
 
-async function deleteMovie(req: Request, res: Response, next: NextFunction) {
+async function deleteMovie(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
   const id = Number(req.params.id)
 
   try {

@@ -1,5 +1,5 @@
 import moviesRepository from "../repositories/moviesRepository.js"
-import { MovieEntity, MovieResponse } from "../protocols/movies.js"
+import { MovieEntity, MovieResponse, MovieReturn } from "../protocols/movies.js"
 import genericErros from "../errors/genericErros.js"
 import { boolean, number } from "joi"
 
@@ -33,13 +33,13 @@ async function createMovies({
   await moviesRepository.createMovies({ name, plataformId, genreId })
 }
 
-async function getMovies() {
+async function getMovies(): Promise<MovieReturn> {
   const movies = await moviesRepository.getMovies()
 
   return movies
 }
 
-async function countMoviesBypPlatform() {
+async function countMoviesBypPlatform(): Promise<MovieReturn> {
   const movies = await moviesRepository.countMoviesBypPlatform()
 
   return movies
