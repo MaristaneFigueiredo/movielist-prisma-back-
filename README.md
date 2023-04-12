@@ -17,27 +17,39 @@ Possui recursos de inserção, alteração, deleção, consulta e demais funcion
   npm i
 ```
 
-3. Crie um banco de dados no PostgreSQL com o nome de "movielist"
+3. Configure o `.env` usando o arquivo `.env.example`
 
-4. Restaure o arquivo dump.sql que segue no projeto.
-   Este arquivo criará as entidades e todos os recursos necessários para o funcionamento do banco
+## Opção: criação do banco automático
 
-5. Configure o `.env` usando o arquivo `.env.example`
-
-6. Run all migrations
+4. Se vc desejar a criação do banco automático e a população de alguns registros nas tabelas de gêneros(genres) e plataformas(plataforms) rode o comando abaixo
 
 ```bash
-npm run migration:run
+  npx prisma migrate dev
+```
+## Opção: criação do banco manualmente
+
+5. Crie um banco de dados no PostgreSQL, como sugestão, pode ser o nome de "movielist"
+
+6. Restaure o arquivo dump.sql que segue no projeto.
+   Este arquivo criará as entidades e todos os recursos necessários para o funcionamento do banco
+
+
+## Última etapa
+
+7. Para rodar o projeto em typescript
+
+```bash
+  npm run dev
 ```
 
-7. Seed db
+
+
+## Observações
+
+8. Seed db
 
 ```bash
 npm run dev:seed
 ```
 
-8. Para rodar o projeto em typescript
 
-```bash
-  npm run dev
-```
